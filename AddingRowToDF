@@ -1,0 +1,10 @@
+spark = SparkSession.builder.getOrCreate()
+
+columns = ['id', 'dogs', 'cats']
+vals = [(1, 2, 0), (2, 0, 1)]
+
+df = spark.createDataFrame(vals, columns)
+
+newRow = spark.createDataFrame([(4,5,7)], columns)
+appended = df.union(newRow)
+appended.show()
